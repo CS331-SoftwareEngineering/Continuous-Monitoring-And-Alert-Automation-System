@@ -21,3 +21,7 @@ Example: An admin notices a sudden increase in CPU usage on the dashboard and in
 Log events and alerts is used to keep a record of all important system activities and alerts. Every event such as alert generation, acknowledgement, errors, and user actions is stored with time and details.
 These logs are helpful for debugging problems, auditing system activity, and analyzing failures after they occur.
 Example: After a system crash, logs are checked to understand what went wrong and how to prevent it in the future.
+
+## Detect Anomalies
+
+The system continuously analyzes monitored metrics such as CPU usage, memory consumption, disk I/O, and network traffic to identify abnormal behavior. An anomaly is any deviation from predefined thresholds or normal historical patterns. The system uses rule-based or behavior-based analysis to detect sudden spikes, drops, or irregular trends. Once detected, anomalies are logged with relevant details and forwarded to the alert module so that administrators can take timely corrective action.
