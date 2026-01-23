@@ -6,7 +6,7 @@ They configure monitoring thresholds, manage users, view detailed system metrics
 
 ### Normal Users
 Normal users can view system health information and receive alerts.  
-They monitor dashboards, check alerts, and view logs based on the permissions granted by the admin.
+They monitor dashboards, check alerts, and view data based on the permissions granted by the admin.
 
 ### Monitoring Agents
 Monitoring agents are background components installed on systems or servers.  
