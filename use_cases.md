@@ -10,6 +10,6 @@ This use case provides users with a centralized dashboard that displays the over
 ### Historical Data View  
 This use case allows users to view previously collected system metrics over selected time ranges such as daily, weekly, or monthly. The system retrieves stored data and presents it in a structured format to help users analyze trends and performance patterns.
 
-### Log Filtering and Searching  
-This use case enables users to filter and search logs based on specific criteria such as date, severity level, or service name. This helps users quickly locate relevant log entries for debugging and analysis.
+### Data Filtering and Searching  
+This use case enables users to filter and search Data based on specific criteria such as date, severity level, or service name. This helps users quickly locate relevant data entries for debugging and analysis.
 
