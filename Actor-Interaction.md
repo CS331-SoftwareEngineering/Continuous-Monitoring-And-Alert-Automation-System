@@ -11,3 +11,6 @@ Represents end users who consume alerts and system information.
 - View Dashboard
 - View Alerts
 - Acknowledge Alerts
+- Change Threshhold
+- Change Notification Settings
+- Data Filtering and searching
