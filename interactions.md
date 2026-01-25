@@ -11,14 +11,15 @@ The Administrator is responsible for managing, configuring, and supervising the 
 - Configure Monitoring Rules and Thresholds  
 - View Data and Alert History  
 - Role Management
-- Alerts Management
+- Alert Generation
+- Sending Alerts
 - Escalate Alerts
 
 The Administrator ensures the system operates reliably, maintains system health, manages user roles, and handles alert escalation when abnormal conditions are detected.
 
 ### Unregistered Users
 
-The UnRegistered Users are the Users who dont have their account in this systen
+The UnRegistered Users are the Users who dont have their account in this system
 
 #### Interactions
 - User Registration
