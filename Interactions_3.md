@@ -7,7 +7,7 @@ An intelligent component responsible for identifying abnormal behavior.
 - Dashboard view
 - Historical Data view
 - Data Filtering and Searching
-- Alerts Management
+- Alerts Generation
 - Alerts Acknowledgement
 
 The AI engine analyzes incoming metrics and historical data to identify unusual patterns, sudden spikes, or deviations from normal behavior. When anomalies are detected, it triggers the alert generation workflow.
@@ -21,7 +21,7 @@ An external communication service used for delivering alerts.
 ### Interactions:
 
 - Notifications options
-- Alerts Management
+- Sending Alerts
 - Alerts Acknowledgement
 - Notification Options
 - Escalate Alerts
