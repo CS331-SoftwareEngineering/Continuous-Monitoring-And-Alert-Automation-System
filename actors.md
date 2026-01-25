@@ -4,9 +4,13 @@
 The administrator manages and controls the entire system.  
 They configure monitoring thresholds, manage users, view detailed system metrics, and handle alert policies and system settings.
 
-### Normal Users
-Normal users can view system health information and receive alerts.  
+### Registered Users
+Registered users can view system health information and receive alerts.  
 They monitor dashboards, check alerts, and view data based on the permissions granted by the admin.
+
+### Unregistered Users
+Represents users without system credentials who can view basic dashboard information and perform user registration to gain authorized access.
+
 
 ### Artificial Intelligence Models
 AI models analyze collected metrics and historical data.  
