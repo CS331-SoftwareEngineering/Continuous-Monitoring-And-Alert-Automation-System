@@ -2,7 +2,6 @@
 
 The following associations represent direct communication or interaction between actors and use cases in the Monitoring & Alert Automation System.
 
-
 ### Admin
 - Admin Login  
 - Role Management  
@@ -10,7 +9,8 @@ The following associations represent direct communication or interaction between
 - Monitor System Metrics  
 - Configure Monitoring Rules and Thresholds
 - View Data and Alert History
-- Alerts Management  
+- Alert Generation
+- Sending Alerts
 - Escalate Alerts
 
 ### Registered User
@@ -39,7 +39,6 @@ The following associations represent direct communication or interaction between
 - Notification Options  
 - Alerts Management
 - Alerts Acknowledgement
-- Notification Options
 - Escalate Alerts  
 
 ### External Systems / APIs
