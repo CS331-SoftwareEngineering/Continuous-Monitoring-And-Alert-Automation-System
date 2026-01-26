@@ -23,7 +23,6 @@ External systems or APIs act as supporting actors that integrate with the Monito
 - DashBoard View
 - Historical Data View
 - Data Filtering and Searching
-- Alerts Management
 - Alert Acknowledgement
 - Threshold Change
 - Notification Options
