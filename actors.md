@@ -11,11 +11,6 @@ They monitor dashboards, check alerts, and view data based on the permissions gr
 ### Unregistered Users
 Represents users without system credentials who can view basic dashboard information and perform user registration to gain authorized access.
 
-
-### Artificial Intelligence Models
-AI models analyze collected metrics and historical data.  
-They help detect anomalies, predict potential failures, and reduce false alerts.
-
 ### Notification Services
 Notification services deliver alerts to users and admins.  
 They send notifications through channels such as email or messaging platforms.
