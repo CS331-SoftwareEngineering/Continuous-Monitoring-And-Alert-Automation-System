@@ -12,7 +12,7 @@
 
 # Notification 
 ## Attributes :-
--notificationId -sendMode
+-notificationId -sendMode(string)
 ## Methods :-
 -sendEmail()
 -sendSMS()
@@ -21,5 +21,5 @@
 # AI Model 
 ## Methods :-
 -predictAnomaly()
--analyzeMetrics()
+
 
