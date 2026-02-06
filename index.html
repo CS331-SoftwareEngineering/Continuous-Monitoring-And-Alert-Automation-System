@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Login | Continuous Monitoring</title>
+    <title>System Portal | Monitor & Initialize</title>
     <style>
         :root {
             --primary-glow: #00f2ff;
@@ -23,7 +23,6 @@
             justify-content: center;
         }
 
-        /* Animated Background Canvas */
         #bg-canvas {
             position: absolute;
             top: 0;
@@ -31,7 +30,7 @@
             z-index: -1;
         }
 
-        /* OUTLINE Gear Icon */
+        /* Shared Decorative Elements */
         .settings-container {
             position: absolute;
             top: 60px;
@@ -45,8 +44,8 @@
         .settings-container svg {
             width: 100%;
             height: 100%;
-            fill: transparent; /* Remove fill */
-            stroke: var(--primary-glow); /* Add outline */
+            fill: transparent;
+            stroke: var(--primary-glow);
             stroke-width: 1px;
             filter: drop-shadow(0 0 8px var(--primary-glow));
         }
@@ -56,7 +55,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* OUTLINE Metric Bars */
         .metrics-container {
             position: absolute;
             bottom: 60px;
@@ -70,8 +68,8 @@
 
         .bar {
             width: 14px;
-            background: transparent; /* Remove fill */
-            border: 1.5px solid var(--primary-glow); /* High-quality outline */
+            background: transparent;
+            border: 1.5px solid var(--primary-glow);
             border-radius: 2px;
             box-shadow: inset 0 0 5px rgba(0, 242, 255, 0.2), 0 0 10px rgba(0, 242, 255, 0.2);
             animation: fluctuate var(--duration) ease-in-out infinite;
@@ -82,7 +80,7 @@
             50% { height: 95%; opacity: 1; transform: scaleY(1.05); }
         }
 
-        /* Login Card */
+        /* Card Base Styling */
         .login-card {
             background: var(--card-bg);
             padding: 40px;
@@ -90,24 +88,45 @@
             border: 1px solid rgba(0, 242, 255, 0.3);
             box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
             backdrop-filter: blur(12px);
-            width: 380px;
+            width: 400px;
             text-align: center;
             color: white;
             z-index: 10;
+            display: none; /* Controlled by active class */
         }
 
-        /* Bold Monitor System Text */
+        .login-card.active { display: block; animation: fadeIn 0.5s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         h2 { 
-            margin-bottom: 30px; 
+            margin-bottom: 20px; 
             letter-spacing: 3px; 
             color: var(--primary-glow); 
-            font-weight: 800; /* Extra Bold */
+            font-weight: 800;
             text-transform: uppercase;
+        }
+
+        .step-indicator {
+            font-size: 0.7rem;
+            color: rgba(0, 242, 255, 0.6);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
         }
 
         .input-group { margin-bottom: 20px; text-align: left; }
 
-        input {
+        label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary-glow);
+            margin-left: 2px;
+        }
+
+        input, select {
             width: 100%;
             padding: 12px;
             margin-top: 5px;
@@ -118,6 +137,8 @@
             box-sizing: border-box;
             transition: 0.3s;
         }
+
+        select option { background: var(--bg-dark); }
 
         input:focus {
             outline: none;
@@ -131,8 +152,9 @@
             font-size: 0.85rem;
             margin-bottom: 25px;
         }
+        .actions a { color: var(--primary-glow); text-decoration: none; }
 
-        .actions a { color: var(--primary-glow); text-decoration: none; transition: 0.2s; }
+        .btn-row { display: flex; gap: 10px; margin-top: 20px; }
 
         button {
             width: 100%;
@@ -144,8 +166,8 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            margin-bottom: 15px;
             text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
         button:hover {
@@ -153,14 +175,17 @@
             box-shadow: 0 0 20px var(--primary-glow);
         }
 
-        .alt-login {
-            border: 1px solid var(--primary-glow);
+        .btn-back, .alt-login {
             background: transparent;
+            border: 1px solid var(--primary-glow);
             color: var(--primary-glow);
         }
 
-        .signup-text { font-size: 0.9rem; margin-top: 20px; opacity: 0.8; }
-        .signup-text a { color: var(--primary-glow); text-decoration: none; font-weight: bold; }
+        .reg-step { display: none; }
+        .reg-step.active { display: block; }
+
+        .signup-text { font-size: 0.9rem; margin-top: 25px; opacity: 0.8; }
+        .signup-text a { color: var(--primary-glow); text-decoration: none; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -181,7 +206,7 @@
 
     <canvas id="bg-canvas"></canvas>
 
-    <div class="login-card">
+    <div id="loginCard" class="login-card active">
         <h2>MONITOR SYSTEM</h2>
         <form>
             <div class="input-group">
@@ -192,17 +217,106 @@
             </div>
             
             <div class="actions">
-                <label style="cursor: pointer;"><input type="checkbox" style="width: auto; margin-right: 5px;"> Remember me</label>
+                <label style="cursor: pointer; color: white;"><input type="checkbox" style="width: auto; margin-right: 5px;"> Remember me</label>
                 <a href="#">Forgot Password?</a>
             </div>
 
             <button type="submit">LOGIN</button>
             <button type="button" class="alt-login">LOGIN WITH PHONE NUMBER</button>
         </form>
-        <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+        <p class="signup-text">Don't have an account? <a onclick="toggleCards('enrollmentCard')">Sign Up</a></p>
+    </div>
+
+    <div id="enrollmentCard" class="login-card">
+        <h2>USER ENROLLMENT</h2>
+        <div class="step-indicator" id="step-text">STEP 1: PERSONAL IDENTITY</div>
+
+        <form id="regForm">
+            <div class="reg-step active" id="step1">
+                <div class="input-group">
+                    <label>First Name</label>
+                    <input type="text" placeholder="e.g. Kael" required>
+                </div>
+                <div class="input-group">
+                    <label>Last Name</label>
+                    <input type="text" placeholder="e.g. Vance" required>
+                </div>
+                <div class="input-group">
+                    <label>Date of Birth</label>
+                    <input type="date" required>
+                </div>
+                <button type="button" onclick="nextStep(2)">CONTINUE</button>
+            </div>
+
+            <div class="reg-step" id="step2">
+                <div class="input-group">
+                    <label>Gender</label>
+                    <select required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="undisclosed">Undisclosed</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="name@network.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+1 000-000-0000" required>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn-back" onclick="nextStep(1)">BACK</button>
+                    <button type="button" onclick="nextStep(3)">CONTINUE</button>
+                </div>
+            </div>
+
+            <div class="reg-step" id="step3">
+                <div class="input-group">
+                    <label>System Username</label>
+                    <input type="text" placeholder="unique_id_01" required>
+                </div>
+                <div class="input-group">
+                    <label>Access Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <div class="btn-row">
+                    <button type="button" class="btn-back" onclick="nextStep(2)">BACK</button>
+                    <button type="submit">INITIALIZE ACCOUNT</button>
+                </div>
+            </div>
+        </form>
+
+        <p class="signup-text">Already have a clearance? <a onclick="toggleCards('loginCard')">Login</a></p>
     </div>
 
     <script>
+        /* Card Toggling */
+        function toggleCards(cardId) {
+            document.querySelectorAll('.login-card').forEach(c => c.classList.remove('active'));
+            document.getElementById(cardId).classList.add('active');
+        }
+
+        /* Multi-step Logic */
+        function nextStep(step) {
+            document.querySelectorAll('.reg-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            
+            const indicators = [
+                "STEP 1: PERSONAL IDENTITY",
+                "STEP 2: CONTACT ASSIGNMENT",
+                "STEP 3: CREDENTIAL SECURITY"
+            ];
+            document.getElementById('step-text').innerText = indicators[step-1];
+        }
+
+        /* Background Animation Script */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -229,22 +343,17 @@
             particles.forEach((p, i) => {
                 p.x += p.vx;
                 p.y += p.vy;
-
                 if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
                 ctx.fill();
-
                 for(let j = i + 1; j < particles.length; j++) {
                     let p2 = particles[j];
                     let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
                     if(dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y); ctx.stroke();
                     }
                 }
             });
