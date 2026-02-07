@@ -1,0 +1,334 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign Up</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root{
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.32);
+      --lineFocus: rgba(255,255,255,.68);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: Inter, system-ui, sans-serif;
+      background:#000;
+      overflow:hidden;
+    }
+
+    .bg{
+      position:fixed;
+      inset:0;
+      z-index:-4;
+    }
+    .bg video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.38), rgba(0,0,0,.05));
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      padding: 48px;
+    }
+
+    .stack{
+      width:min(480px, 92vw);
+      display:grid;
+      gap:16px;
+      color:var(--text);
+    }
+
+    h1{
+      margin:0;
+      font-size:38px;
+      letter-spacing:-0.04em;
+    }
+
+    .lead{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    form{ display:grid; gap:14px; }
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media(max-width:460px){
+      .grid2{ grid-template-columns:1fr; }
+    }
+
+    .field{ display:grid; gap:8px; }
+
+    .label{
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .inputRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid var(--line);
+    }
+    .inputRow:focus-within{
+      border-bottom-color:var(--lineFocus);
+    }
+
+    input{
+      width:100%;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--text);
+      font-size:14px;
+    }
+
+    input::placeholder{ color:rgba(255,255,255,.5); }
+
+    .inputRow:focus-within input{
+      background:rgba(0,0,0,.12);
+      padding:6px 8px;
+      margin:-6px -8px;
+      border-radius:10px;
+    }
+
+    .icon{
+      width:16px;
+      height:16px;
+      opacity:.9;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+
+    .btn{
+      margin-top:6px;
+      padding:12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(0,0,0,.22);
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .btn:hover{ background:rgba(0,0,0,.28); }
+
+    .sub{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .sub a{
+      color:#fff;
+      font-weight:800;
+      text-decoration:none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg">
+    <video autoplay muted loop playsinline>
+      <source src="./a3b1cc1f-33d2-4abc-9efb-0f22498584f5.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="overlay"></div>
+
+  <main class="wrap">
+    <section class="stack">
+      <div>
+        <h1>Sign Up</h1>
+        <p class="lead">Create your account</p>
+      </div>
+
+      <form onsubmit="return handleSignup(event)">
+        <div class="grid2">
+          <div class="field">
+            <div class="label">Full name</div>
+            <div class="inputRow">
+              <input id="fullName" placeholder="Full name" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label">User name</div>
+            <div class="inputRow">
+              <input id="username" placeholder="User name" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">Organisation name</div>
+          <div class="inputRow">
+            <input id="org" placeholder="Organisation name" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="label">Email</div>
+          <div class="inputRow">
+            <input id="email" type="email" placeholder="Email" required>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <div class="label">Phone number</div>
+            <div class="inputRow">
+              <input id="phone" type="tel" placeholder="Phone number" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label">Date of birth</div>
+            <div class="inputRow" onclick="openDobPicker()">
+              <input id="dob" type="date" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <div class="label">Password</div>
+            <div class="inputRow">
+              <input id="password" type="password" placeholder="Password" required>
+              <svg class="icon" onclick="togglePassword('password',this)" viewBox="0 0 24 24" fill="none">
+                <path d="M1.5 12s4-7 10.5-7 10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z" stroke="currentColor" stroke-width="1.7"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label">Confirm password</div>
+            <div class="inputRow">
+              <input id="confirm" type="password" placeholder="Confirm password" required>
+              <svg class="icon" onclick="togglePassword('confirm',this)" viewBox="0 0 24 24" fill="none">
+                <path d="M1.5 12s4-7 10.5-7 10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12Z" stroke="currentColor" stroke-width="1.7"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" type="submit">Create Account</button>
+
+        <div class="sub">
+          Already have an account?
+          <a href="./login (1).html">Login</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function togglePassword(id, icon){
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+      icon.style.opacity = input.type === "text" ? "0.6" : "0.9";
+    }
+
+    function openDobPicker(){
+      const dob = document.getElementById("dob");
+      if (dob.showPicker) dob.showPicker();
+      else dob.focus();
+    }
+
+    async function handleSignup(e){
+      e.preventDefault();
+      
+      const fullName = document.getElementById('fullName').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const org = document.getElementById('org').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const dob = document.getElementById('dob').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm').value;
+
+      // Client-side validation
+      if (!fullName || !username || !org || !email || !phone || !dob || !password || !confirmPassword) {
+        return toast('Please fill all fields.');
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return toast('Please enter a valid email.');
+      }
+      if (password.length < 6) {
+        return toast('Password must be at least 6 characters.');
+      }
+      if (password !== confirmPassword) {
+        return toast('Passwords do not match.');
+      }
+
+      try {
+        const response = await fetch('http://localhost:3000/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fullName, username, org, email, phone, dob, password, confirmPassword })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          toast('Account created successfully!');
+          setTimeout(() => {
+            window.location.href = './login (1).html';
+          }, 1500);
+        } else {
+          toast(data.message || 'Signup failed');
+        }
+      } catch (error) {
+        toast('Server error. Please try again.');
+        console.error('Signup error:', error);
+      }
+      return false;
+    }
+
+    function toast(message) {
+      const el = document.createElement('div');
+      el.textContent = message;
+      el.style.cssText = `
+        position: fixed; left: 24px; bottom: 24px; padding: 10px 12px;
+        border-radius: 14px; z-index: 9999; font-family: Inter, sans-serif;
+        font-size: 12px; font-weight: 800; border: 1px solid rgba(255,255,255,.22);
+        backdrop-filter: blur(10px); box-shadow: 0 16px 40px rgba(0,0,0,.25);
+        color: rgba(255,255,255,.92); background: rgba(0,0,0,.22);
+      `;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 2500);
+      return false;
+    }
+  </script>
+</body>
+</html>
