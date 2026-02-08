@@ -1,28 +1,26 @@
----
+Metric: |
+  ## Metric Class
 
-## Metric Class
+  ### Attributes
 
-### Attributes
+  | Attribute    | Visibility | Description                      |
+  |-------------|------------|----------------------------------|
+  | metricId    | private    | Unique identifier for the metric |
+  | metricName  | private    | Name of the metric               |
+  | metricValue | private    | Current value of the metric      |
+  | unit        | private    | Unit of measurement              |
+  | timestamp   | private    | Time when metric was collected   |
+  | status      | private    | Normal / Warning / Critical      |
 
-| Attribute      | Visibility | Description                         |
-|---------------|------------|-------------------------------------|
-| metricId      | private    | Unique identifier for the metric    |
-| metricName    | private    | Name of the metric (CPU, Memory)    |
-| metricValue   | private    | Current value of the metric         |
-| unit          | private    | Unit of measurement (%) / MB        |
-| timestamp     | private    | Time when metric was collected      |
-| status        | private    | Normal / Warning / Critical         |
+  ### Methods
 
-### Methods
+  | Method              | Visibility | Purpose                           |
+  |---------------------|------------|-----------------------------------|
+  | collectMetric()     | public     | Collects metric value             |
+  | updateMetricValue() | public     | Updates value and timestamp       |
+  | getMetricValue()    | public     | Returns metric value              |
+  | evaluateStatus()    | public     | Determines metric status          |
 
-| Method              | Visibility | Purpose                                           |
-|---------------------|------------|---------------------------------------------------|
-| collectMetric()     | public     | Collects the current metric value from the system |
-| updateMetricValue() | public     | Updates metric value and timestamp                |
-| getMetricValue()    | public     | Returns the current metric value                  |
-| evaluateStatus()    | public     | Determines the metric status                      |
-
----
 
 ## Threshold Class
 
