@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1770476117154,
+    "fullName": "tejeshwar",
+    "username": "tejeshwar",
+    "org": "ntg",
+    "email": "ajja@gmail.com",
+    "phone": "7207526924",
+    "dob": "2010-06-05",
+    "password": "Hey@2005",
+    "createdAt": "2026-02-07T14:55:17.154Z"
+  },
+  {
+    "id": 1770478880232,
+    "fullName": "venkat tejeshwar",
+    "username": "kk1234",
+    "org": "monta",
+    "email": "tejeshwar1728@gmail.com",
+    "phone": "7207526924",
+    "dob": "2006-09-09",
+    "password": "56rrfvcR",
+    "createdAt": "2026-02-07T15:41:20.232Z"
+  },
+  {
+    "id": 1770558155245,
+    "fullName": "venkat tejeshwar",
+    "username": "tejesh",
+    "org": "aas",
+    "email": "kdgamer.704@gmail.com",
+    "phone": "7207526924",
+    "dob": "2013-02-04",
+    "password": "Hey123",
+    "createdAt": "2026-02-08T13:42:35.245Z"
+  },
+  {
+    "id": 1770560961146,
+    "fullName": "Rohan Boppani",
+    "username": "r123",
+    "org": "ROSE",
+    "email": "boppanirohan@gmail.com",
+    "phone": "9059167853",
+    "dob": "2005-07-06",
+    "password": "Avna123",
+    "createdAt": "2026-02-08T14:29:21.146Z"
+  }
+]
