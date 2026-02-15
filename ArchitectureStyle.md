@@ -41,36 +41,42 @@ In this system:
    - Login and logout
    - Authentication and authorization
    - Role management
-   - **Granularity**: Medium-grained (handles complete user lifecycle functionality)
+
+**Granularity**: Medium-grained (handles complete user lifecycle functionality)
 
 ### 2. Monitoring Module
    - Collection of CPU, memory, and disk metrics
    - Storage of performance data
-   -  **Granularity**: Medium-grained (handles full monitoring responsibility)
+
+**Granularity**: Medium-grained (handles full monitoring responsibility)
 
 ### 3. Alert Management Module
    - Definition of threshold values
    - Evaluation of metrics
    - Generation of alerts
-   - **Granularity**: Medium-grained (handles abnormal condition detection and alert lifecycle)
+
+**Granularity**: Medium-grained (handles abnormal condition detection and alert lifecycle)
 
 ### 4. Notification Module
    - Sending email/SMS notifications
    - Integration with messaging services
    - Maintenance of notification history
-   -  **Granularity**: Medium-grained (handles communication workflow)
+
+**Granularity**: Medium-grained (handles communication workflow)
 
 ### 5.Dashboard Module
    - Display of real-time metrics
    - Graphical visualization
    - System health monitoring
-   -  **Granularity**: Presentation-level module responsible for user interaction
+
+**Granularity**: Presentation-level module responsible for user interaction
 
 ### 6. Logging Module
    - Storage of system logs
    - Maintenance of audit records
    - Recording alert history
-   - **Granularity** : Cross-cutting module supporting traceability and monitoring
+
+**Granularity** : Cross-cutting module supporting traceability and monitoring
 
 ---
 
