@@ -26,7 +26,6 @@ The system operates using events such as:
 2. If thresholds are exceeded, an event is generated.
 3. The alert module processes the event.
 4. The notification module reacts and sends alerts.
-5. The logging module records system activities.
 
 ---
 
@@ -40,3 +39,4 @@ The system satisfies Event-Driven Architecture because:
 - Loose coupling improves flexibility and reliability.
 
 ---
+
